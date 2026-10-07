@@ -1,32 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+import Link from 'next/link';
+import type { ReactNode } from 'react';
 
-:root {
-  color-scheme: dark;
-}
+export function SiteShell({ children }: { children: ReactNode }) {
+  return (
+    <>
+      <header className="topbar">
+        <nav className="nav-wrap">
+          <Link href="/" className="brand-mark" aria-label="NovaFlow home">
+            <span className="brand-icon">N</span>
+            <span className="brand-name">NovaFlow</span>
+          </Link>
 
-html {
-  scroll-behavior: smooth;
-}
+          <div className="nav-links">
+            <Link href="/docs">Docs</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/dashboard">Dashboard</Link>
+          </div>
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #020617;
-  color: #e2e8f0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+          <div className="nav-actions">
+            <Link href="/docs" className="ghost-button">Log in</Link>
+            <Link href="/pricing" className="primary-button small">Book demo</Link>
+          </div>
+        </nav>
+      </header>
 
-* {
-  box-sizing: border-box;
-}
+      {children}
 
-button {
-  cursor: pointer;
-}
+      <footer className="footer-shell">
+        <div className="footer-content">
+          <div className="brand-mark">
+            <span className="brand-icon">N</span>
+            <span className="brand-name">NovaFlow</span>
+          </div>
 
-::selection {
-  background: rgba(99, 102, 241, 0.5);
-  color: white;
+          <div className="footer-links">
+            <Link href="/docs">Docs</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/blog">Blog</Link>
+          </div>
+
+          <div className="copyright">© 2026 NovaFlow</div>
+        </div>
+      </footer>
+    </>
+  );
 }
